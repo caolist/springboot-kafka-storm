@@ -1,7 +1,6 @@
 package com.caoyl.storm;
 
-import com.caoyl.storm.storm.TopologyApp;
-import com.caoyl.storm.storm.topology.ESInsertTopology;
+import com.caoyl.storm.storm.topology.EsInsertTopology;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -27,7 +26,7 @@ public class Application {
         GetSpringBean springBean = new GetSpringBean();
         springBean.setApplicationContext(context);
 //        TopologyApp app = context.getBean(TopologyApp.class);
-        ESInsertTopology app = context.getBean(ESInsertTopology.class);
+        EsInsertTopology app = context.getBean(EsInsertTopology.class);
         app.runStorm(args);
     }
 

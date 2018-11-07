@@ -43,6 +43,15 @@ public class ApplicationConfiguration {
     @Value("${es.index.type}")
     private String esIndexType;
 
+    @Value("es.port")
+    private String esPort;
+
+    @Value("es.storm.bolt.write.ack")
+    private String esStormBoltWriteAck;
+
+    @Value("es.storm.bolt.flush.entries.size")
+    private String esStormBoltFlushEntriesSize;
+
     /**
      * 获取topicName
      *
@@ -111,5 +120,17 @@ public class ApplicationConfiguration {
 
     public String getEsIndexType() {
         return esIndexType;
+    }
+
+    public String getEsPort() {
+        return esPort;
+    }
+
+    public String getEsStormBoltWriteAck() {
+        return esStormBoltWriteAck;
+    }
+
+    public String getEsStormBoltFlushEntriesSize() {
+        return esStormBoltFlushEntriesSize;
     }
 }
