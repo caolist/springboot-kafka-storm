@@ -33,6 +33,7 @@
         <kafka.version>1.0.0</kafka.version>
         <storm.version>1.2.2</storm.version>
         <fastjson.version>1.2.41</fastjson.version>
+        <elasticsearch.version>6.4.2</elasticsearch.version>
         <druid>1.1.8</druid>
     </properties>
 
@@ -128,6 +129,7 @@
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
             <version>${storm.version}</version>
+
             <!--排除相关依赖  -->
             <exclusions>
                 <exclusion>
@@ -172,6 +174,25 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid}</version>
+        </dependency>
+
+        <!-- elasticsearch 相关jar -->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch-hadoop</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
         </dependency>
 
     </dependencies>
