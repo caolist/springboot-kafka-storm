@@ -53,6 +53,7 @@ public class KafkaInsertDataSpout extends BaseRichSpout {
     @SuppressWarnings("rawtypes")
     @Override
     public void open(Map map, TopologyContext arg1, SpoutOutputCollector collector) {
+
         app = GetSpringBean.getBean(ApplicationConfiguration.class);
         kafkaInit();
         this.collector = collector;
@@ -60,6 +61,7 @@ public class KafkaInsertDataSpout extends BaseRichSpout {
 
     @Override
     public void nextTuple() {
+
         for (; ; ) {
             try {
                 msgList = consumer.poll(100);
@@ -82,8 +84,8 @@ public class KafkaInsertDataSpout extends BaseRichSpout {
                     }
                     logger.info("Spout发射的数据:" + list);
 
-                    //发送到bolt中
-                    this.collector.emit(new Values(JSON.toJSONString(list)));
+                    //发送到bolt中 // TODO 测试多个字段
+                    this.collector.emit(new Values(JSON.toJSONString(list), JSON.toJSONString(list)));
                     consumer.commitAsync();
                 } else {
                     TimeUnit.SECONDS.sleep(3);
@@ -102,13 +104,18 @@ public class KafkaInsertDataSpout extends BaseRichSpout {
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields(Constants.FIELD));
+
+//        declarer.declare(new Fields(Constants.FIELD));
+
+        // TODO 测试 tuple 多个字段
+        declarer.declare(new Fields(Constants.FIELDS[0],Constants.FIELDS[1]));
     }
 
     /**
      * 初始化kafka配置
      */
     private void kafkaInit() {
+
         Properties props = new Properties();
         props.put("bootstrap.servers", app.getServers());
         props.put("max.poll.records", app.getMaxPollRecords());

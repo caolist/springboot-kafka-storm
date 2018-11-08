@@ -46,7 +46,11 @@ public class InsertBolt extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
+
         String msg = tuple.getStringByField(Constants.FIELD);
+
+        // TODO 测试多 tuple 字段
+        //String msg = tuple.getStringByField(Constants.FIELDS[0]);
 
         try {
             List<User> listUser = JSON.parseArray(msg, User.class);

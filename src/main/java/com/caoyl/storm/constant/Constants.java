@@ -15,5 +15,6 @@ public class Constants {
     public final static String KAFKA_SPOUT = "KAFKA_SPOUT";
     public final static String MYSQL_INSERT_BOLT = "MYSQL_INSERT_BOLT";
     public final static String ES_INSERT_BOLT = "ES_INSERT_BOLT";
-    public final static String FIELD = "insert";
+    public final static String FIELD = "name";
+    public final static String[] FIELDS = {"name","age"};
 }
